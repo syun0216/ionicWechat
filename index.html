@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HappyLifePlat</title>
+    <meta name="description"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <script src="cordova.js"></script>
+    <script src="assets/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/styles/ionic.min.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/styles/public.css">
+    <!--ionic-filter-bar-->
+
+    <link rel="stylesheet" href="assets/lib/ionic-filter-bar/dist/ionic.filter.bar.css">
+    <!-- build:css({.tmp,client}) assets/styles/main.css -->
+    <link rel="stylesheet" href="assets/styles/main.css"/>
+    <!-- endbuild -->
+    <script>
+        function onDeviceReady() {
+            if (navigator.splashscreen)
+                setTimeout(function () {
+                    navigator.splashscreen.hide();
+                });
+        }
+        document.addEventListener('deviceready', onDeviceReady, false);
+
+    </script>
+</head>
+<body data-ng-app="app" ng-controller="AppCtrl" id="app">
+
+<ion-nav-view animation="slide-right-left"></ion-nav-view>
+
+<!-- build:js script/ui.js -->
+<script src="assets/lib/ionic/release/js/ionic.bundle.min.js"></script>
+<script src="assets/lib/angular-cookies/angular-cookies.min.js"></script>
+<script src="assets/lib/angular-cache/dist/angular-cache.min.js"></script>
+<!--ionic-datepicker-->
+<!-- endbuild -->
+
+
+<!-- build:js script/app.js -->
+<!-- inject:js -->
+<script src="script/app/app.module.js"></script>
+
+<script src="script/app/core/app.config.js"></script>
+<script src="script/app/core/app.controller.js"></script>
+<script src="script/app/core/app.directive.js"></script>
+<script src="script/app/core/config.route.js"></script>
+<script src="script/app/core/core.module.js"></script>
+<script src="script/app/core/user.service.js"></script>
+<!-- endinject -->
+<!-- endbuild -->
+</body>
+
+</html>
