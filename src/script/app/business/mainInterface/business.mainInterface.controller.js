@@ -7,6 +7,9 @@
         .controller("BusinessMainInterfaceCtrl",['$scope','$stateParams','$cookieStore','$state',BusinessMainInterfaceCtrl]);
     function BusinessMainInterfaceCtrl($scope,$stateParams,$cookieStore,$state){
         $scope.myName = $stateParams.name;
+        if($scope.myName == null){
+            $scope.myName = $cookieStore.get('username');
+        }
         $scope.clearCache = function () {
             localStorage.clear();
             $cookieStore.remove('username');

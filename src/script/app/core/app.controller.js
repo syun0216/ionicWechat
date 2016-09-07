@@ -6,11 +6,11 @@
             //if(!angular.isDefined(BusinessLoginService.userInfo()) && window.location.href.indexOf('/#/business/login/')==-1){
             //    window.location.href='/#/business/login/';
             //}
-            if(localStorage.userid != undefined && localStorage.userid!=null){
-                $state.go('BusinessLogin',{id:localStorage.userid});
+            if(localStorage.username != undefined && localStorage.username!=null){
+                $state.go('BusinessLogin',{id:localStorage.username});
             }
             else{
-                $state.go('BusinessLogin');
+                $state.go('BusinessMainInterface');
             }
 
             /*document.addEventListener("deviceready", function () {
