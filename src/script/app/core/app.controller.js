@@ -7,7 +7,7 @@
             //    window.location.href='/#/business/login/';
             //}
             if(localStorage.userid != undefined && localStorage.userid!=null){
-                $state.go('BusinessMainInterface',{id:localStorage.userid});
+                $state.go('BusinessLogin',{id:localStorage.userid});
             }
             else{
                 $state.go('BusinessLogin');

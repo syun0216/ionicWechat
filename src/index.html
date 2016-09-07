@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>HappyLifePlat</title>
+    <title>ionicWechat</title>
     <meta name="description"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -12,7 +12,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <script src="cordova.js"></script>
+    <!--<script src="cordova.js"></script>-->
     <script src="assets/lib/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="assets/styles/ionic.min.css"/>
     <link rel="stylesheet" type="text/css" href="assets/styles/public.css">
@@ -48,13 +48,18 @@
 <!-- build:js script/app.js -->
 <!-- inject:js -->
 <script src="script/app/app.module.js"></script>
-
+<script src="script/components/app.filter.js"></script>
+<script src="script/app/business/business.module.js"></script>
 <script src="script/app/core/app.config.js"></script>
 <script src="script/app/core/app.controller.js"></script>
 <script src="script/app/core/app.directive.js"></script>
 <script src="script/app/core/config.route.js"></script>
 <script src="script/app/core/core.module.js"></script>
 <script src="script/app/core/user.service.js"></script>
+<script src="script/app/business/login/business.login.controller.js"></script>
+<script src="script/app/business/login/business.login.service.js"></script>
+<script src="script/app/business/mainInterface/business.mainInterface.controller.js"></script>
+<script src="script/app/business/mainInterface/business.mainInterface.service.js"></script>
 <!-- endinject -->
 <!-- endbuild -->
 </body>

@@ -1,0 +1,243 @@
+//body{background:#efefef;}
+.border_none{border:none}
+.border_bottom{border-bottom:1px solid #ccc;}
+.border_left{ border-left:1px solid #ddd;}
+.border_radius{border-radius:0px;}
+//.border_left_none{border-right:none;}
+.width100{width: 100%;}
+.font-default{font-size: 16px;}
+.font_18{font-size:18px;}
+.color_red{color:#ff5858;}
+.color_white{color:#fff;}
+.float_none{float:none;}
+.background_red{background:#ff5858;}
+.background_white{background:#fff;}
+.margin_auto{margin:auto;}
+.margin_top{margin-top:10px;}
+.margin-top_6{margin-top:6px;}
+.margin_bottom_20{ margin-bottom:20px;}
+.margin_bottom_59{margin-bottom:59px;}
+//**********登录界面的样式  开始
+.login_body{
+  @extend .font-default;
+  width: 80%;
+  margin:auto;
+  .top_im{
+    width:60%;
+    margin:2.5em auto;
+    img{
+      @extend .width100;
+    }
+  }
+  .input_detail{
+    input{
+      @extend .border_radius;
+      border-bottom:1px solid #ddd;
+      padding: 28px 4px;
+    }
+    .code{
+      @extend .border_bottom;
+      input{
+        @extend .float_none;
+        @extend .border_none;
+        display: inline-block;
+      }
+      button{
+        @extend .float_none;
+        @extend .border_none;
+        @extend .color_red;
+        @extend .border_radius;
+        @extend .background_white;
+        margin-top:2px;
+        border-left:1px solid #dddddd !important;
+        display: inline-block;
+      }
+    }
+  }
+  .login_btn{
+    @extend .background_red;
+    @extend .border_none;
+    @extend .border_radius;
+    color:#fff;
+    letter-spacing: 3px;
+    margin-top:3em;
+    //padding:12px 18px;
+  }
+}
+//******************登录界面的样式  结束
+
+//******************badge 样式
+.sub_title{
+  margin-top:8px;
+  position: relative;
+  font-size:17px;
+}
+.num{
+  @extend .background_red;
+  position: absolute;
+  font-size:15px;
+  border-radius:50%;
+  color:#fff;
+  width:21px;
+  height: 21px;
+  top:-9px;
+}
+//*******************
+
+//***************  登录页标题样式
+.body_bar{
+  @extend .border_bottom;
+  @extend .font-default;
+  @extend .background_white;
+  padding:12px 6px 2px;
+  .back{
+    padding: 0 0.8em;
+  }
+  .top_title{
+    font-size:18px;
+    margin-top:-28px;
+  }
+}
+//*********************
+
+//间隔样式
+.gap{height:20px;background:#efefef;}
+//间隔样式
+
+//****************   配送端标题样式
+.delivery_bar{
+  @extend .font-default;
+  @extend .background_white;
+  padding:13px 6px 2px;
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index: 9999;
+  border-top:1px solid #ddd;
+  .top_title1{
+    font-size:18px;
+    margin-top:-26px;
+    width:65%;
+    position: relative;
+    display:inline-block;
+  }
+  .badge{
+    @extend .background_red;
+    @extend .color_white;
+    position: absolute;
+    top:-7px;
+  }
+  .search{
+    margin-top:-2.4em;
+    padding: 0 0.8em;
+    img{
+      width:1.5em;
+    }
+  }
+  .btn_search{
+    margin-top:-8px;
+    float: right;
+    img{
+      width:1.5em;
+    }
+  }
+}
+
+.back_arrow{
+  padding: 0.8em 1.5em 0.8em 0.8em;
+  img{
+    width:0.6em;
+  }
+}
+//****************
+
+//配送端选择标题样式
+.choose_bar{
+  @extend .background_white;
+  text-align: center;
+  padding:1em 0;
+  div{
+    display:inline-block;
+    margin-left:2.4em;
+    img{
+      width:1em;
+      margin-left:0.8em;
+    }
+  }
+}
+//配送端选择标题样式
+
+//*********角标样式
+.img_mark{
+  width: 30%;
+  position: absolute;
+  top:-6px;
+}
+.img_mark_title{
+  @extend .color_white;
+  position: absolute;
+  top:-5px;
+  left:10px;
+  letter-spacing: 3px;
+}
+//*********角标样式
+
+//********放格内容样式
+.lists_details {
+  @extend .border_left;
+  padding:25px 0;
+  border:1px solid #ccc;
+  div img{
+    width:2.5em;
+    margin-top:12px;
+  }
+}
+//********方格内容样式
+
+.default{
+  position: relative;
+  @extend .margin_bottom_20;
+  .body_lists{
+    @extend .margin_auto;
+    @extend .background_white;
+  }
+}
+.water{
+  position: relative;
+  @extend .background_white;
+  @extend .margin_bottom_20;
+}
+.wash{
+  position:relative;
+  @extend .background_white;
+  @extend .margin_bottom_20;
+}
+//************************
+
+//首页底部菜单选择样式
+.tabs-red > .tabs,
+.tabs.tabs-red {
+  border-color: #fff;
+  background-color: #fff;
+  background-image: linear-gradient(0deg, #fff, #fff 50%, transparent 50%);
+  color: #ff5858; }
+.tabs-red > .tabs .tab-item .badge,
+.tabs.tabs-red .tab-item .badge {
+  background-color: #fff;
+  color: #ff5858; }
+.tabs-striped.tabs-red .tabs {
+  background-color: #fff; }
+
+.tabs-striped.tabs-red .tab-item {
+  color: rgba(0, 0, 0, 0.6);
+  opacity: 1; }
+.tabs-striped.tabs-red .tab-item .badge {
+  opacity: 0.4; }
+.tabs-striped.tabs-red .tab-item.tab-item-active, .tabs-striped.tabs-assertive .tab-item.active, .tabs-striped.tabs-assertive .tab-item.activated {
+  margin-top: -2px;
+  color: #ff5858;
+  border-style: solid;
+  border-width: 4px 0 0 0;
+  border-color: #ff5858; }
+
+//搜索框

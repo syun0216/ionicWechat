@@ -1,0 +1,16 @@
+<ion-view view-title="" cache-view="false" hide-nav-bar="true">
+    <ion-content overflow-scroll="false" style="overflow: hidden;margin-top:20px;">
+        <div class="login_body">
+            <div class="top_im">
+                <img src="assets/images/fire.png" alt="登录界面标题"/>
+            </div>
+            <div class="input_detail">
+                <input type="tel" placeholder="输入手机号" pattern="[0-9]*" class="col" ng-model="info.phone" id="phone"/>
+                <div class="code"><input type="tel" placeholder="输入密码" pattern="[0-9]*" class="col col-75" ng-model="info.password"/>
+                </div>
+            </div>
+            <button class="button col login_btn" ng-click="confirmLogin()">登录</button>
+        </div>
+    </ion-content>
+
+</ion-view>
