@@ -6,6 +6,7 @@
     'use strict';
     angular.module("app.business",[
         'app.core',
-        'jett.ionic.filter.bar'
+        'jett.ionic.filter.bar',
+        'ionic-datepicker'
     ])
 })();

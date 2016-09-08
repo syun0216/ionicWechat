@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module("app")
-        .config(['CacheFactoryProvider', '$cookiesProvider','$ionicConfigProvider','$ionicFilterBarConfigProvider', function (CacheFactoryProvider, $cookiesProvider,$ionicConfigProvider,$ionicFilterBarConfigProvider) {
+        .config(['CacheFactoryProvider', '$cookiesProvider','$ionicConfigProvider','$ionicFilterBarConfigProvider','ionicDatePickerProvider', function (CacheFactoryProvider, $cookiesProvider,$ionicConfigProvider,$ionicFilterBarConfigProvider,ionicDatePickerProvider) {
             angular.extend($cookiesProvider.defaults, {
                 path: "/"
             });
@@ -21,6 +21,23 @@
              $ionicFilterBarConfigProvider.transition('vertical');
              $ionicFilterBarConfigProvider.placeholder('Filter');
 
+            var datePickerObj = {
+                inputDate: new Date(),
+                setLabel: 'Set',
+                todayLabel: 'Today',
+                closeLabel: 'Close',
+                mondayFirst: false,
+                weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+                monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+                templateType: 'popup',
+                from: new Date(2012, 8, 1),
+                to: new Date(2018, 8, 1),
+                showTodayButton: true,
+                dateFormat: 'dd MMMM yyyy',
+                closeOnSelect: false,
+                disableWeekdays: []
+            };
+            ionicDatePickerProvider.configDatePicker(datePickerObj);
         }])
         .run(['$http', 'CacheFactory', function ($http, CacheFactory) {
             $http.defaults.cache = CacheFactory('defaultCache', {
