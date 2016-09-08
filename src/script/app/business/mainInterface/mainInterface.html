@@ -123,7 +123,7 @@
                         </ion-header-bar>
                         <ion-content overflow-scroll='true' style="background: #efefef" scroll="true"
                                      direction="y">
-                            <ion-list>
+                            <ion-list >
                                 <ion-item>
                                     <ion-spinner icon="spiral"></ion-spinner>
                                     <ion-option-button style="padding: 0 30px;" class="button-positive icon ion-edit"
@@ -234,8 +234,12 @@
                         <ion-checkbox>Red</ion-checkbox>
                         <ion-checkbox>Yellow</ion-checkbox>
                         <ion-checkbox>Pink</ion-checkbox>
+                        <ion-radio ng-model="choice" ng-value="'A'">Choose A</ion-radio>
+                        <ion-radio ng-model="choice" ng-value="'B'">Choose B</ion-radio>
+                        <ion-radio ng-model="choice" ng-value="'C'">Choose C</ion-radio>
+                        <ion-toggle ng-model="airplaneMode">Airplane Mode</ion-toggle>
                     </ion-list>
-                    <button class="button button-assertive button-block" style="position: absolute;bottom: -4px;"
+                    <button class="button button-assertive button-block button-full" style="position: absolute;bottom: -6px;"
                             ng-click="showConfirm()">
                         退出
                     </button>

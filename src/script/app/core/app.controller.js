@@ -7,10 +7,10 @@
             //    window.location.href='/#/business/login/';
             //}
             if(localStorage.username != undefined && localStorage.username!=null){
-                $state.go('BusinessLogin',{id:localStorage.username});
+                $state.go('BusinessMainInterface',{id:localStorage.username});
             }
             else{
-                $state.go('BusinessMainInterface');
+                $state.go('BusinessLogin');
             }
 
             /*document.addEventListener("deviceready", function () {
