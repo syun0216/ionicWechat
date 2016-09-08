@@ -1,9 +1,40 @@
 <ion-view view-title="首页" cache-view="true">
-    <ion-header-bar>
-        hahahah
+    <ion-header-bar class="bar-positive">
+        <h1 class="title">预定车票</h1>
     </ion-header-bar>
-    <ion-content style="margin-top:40px">
-        <p style="text-align: center">{{myName}}</p>
-        <button ng-click="clearCache()">clear cache</button>
-    </ion-content>
+    <ion-tabs class="tabs-stable tabs-icon-top">
+        <ion-tab title="预定" icon-on="ion-ios-paper" icon-off="ion-ios-paper-outline">
+            <ion-view>
+                <ion-header-bar class="bar-stable">
+                    <h1 class="title">预定</h1>
+                </ion-header-bar>
+                <ion-content>
+                    <p>欢迎{{myName}}</p>
+                </ion-content>
+            </ion-view>
+        </ion-tab>
+
+        <ion-tab title="出行" icon-on="ion-ios-paw" icon-off="ion-ios-paw-outline" badge="12" badge-style="badge-assertive">
+            <ion-view>
+                <ion-header-bar  class="bar-stable">
+                    <h1 class="title">出行</h1>
+                </ion-header-bar>
+                <ion-content>
+                    <p>about content</p>
+                </ion-content>
+            </ion-view>
+        </ion-tab>
+
+        <ion-tab title="我的" icon-on="ion-ios-person" icon-off="ion-ios-person-outline">
+            <ion-view>
+                <ion-header-bar  class="bar-stable">
+                    <h1 class="title">我的</h1>
+                </ion-header-bar>
+                <ion-content>
+                    <p>settings content</p>
+                    <button ng-click="clearCache()">退出</button>
+                </ion-content>
+            </ion-view>
+        </ion-tab>
+    </ion-tabs>
 </ion-view>
