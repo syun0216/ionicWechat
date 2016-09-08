@@ -1,40 +1,45 @@
 (function () {
-'use strict';
+    'use strict';
 
-angular.module('app')
-      .config(['$stateProvider','$urlRouterProvider',routeConfig]);
+    angular.module('app')
+        .config(['$stateProvider', '$urlRouterProvider', routeConfig]);
 
 
-      function routeConfig($stateProvider, $urlRouterProvider) {
+    function routeConfig($stateProvider, $urlRouterProvider) {
 
-         var routes, setRoutes;
+        var routes, setRoutes;
 
-         routes = [
-             {name:'BusinessLogin',ctrl:'BusinessLoginCtrl',url:'business/login/',tpl:'business/login/login'},
-             {name:'BusinessMainInterface',ctrl:'BusinessMainInterfaceCtrl',url:'business/mainInterface/:name',tpl:'business/mainInterface/mainInterface'}
-         ];
+        routes = [
+            {name: 'BusinessLogin', ctrl: 'BusinessLoginCtrl', url: 'business/login/', tpl: 'business/login/login'},
+            {
+                name: 'BusinessMainInterface',
+                ctrl: 'BusinessMainInterfaceCtrl',
+                url: 'business/mainInterface/:name',
+                tpl: 'business/mainInterface/mainInterface'
+            },
+            {name:'BusinessItem',ctrl:'BusinessItemCtrl',url:'business/item/:itemName',tpl:'business/item/item'}
+        ];
 
-         setRoutes = function (route) {
-                  var config,name; 
-                  config = {
-                      url: "/" + route.url,
-                      templateUrl: 'script/app/' + route.tpl + '.html',
-                      controller:route.ctrl
-                  };
-                  $stateProvider.state(route.name,config);
-                  return $stateProvider;
-           };
+        setRoutes = function (route) {
+            var config, name;
+            config = {
+                url: "/" + route.url,
+                templateUrl: 'script/app/' + route.tpl + '.html',
+                controller: route.ctrl
+            };
+            $stateProvider.state(route.name, config);
+            return $stateProvider;
+        };
 
-          
-          routes.forEach(function (route) {
-                  return setRoutes(route); 
-           });
 
-        
+        routes.forEach(function (route) {
+            return setRoutes(route);
+        });
 
-          $urlRouterProvider.otherwise('/business/login');
 
-        } 
+        $urlRouterProvider.otherwise('/business/login');
+
+    }
 })();
 
 

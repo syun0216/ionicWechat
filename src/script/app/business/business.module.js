@@ -6,5 +6,6 @@
     'use strict';
     angular.module("app.business",[
         'app.core',
+        'jett.ionic.filter.bar'
     ])
 })();

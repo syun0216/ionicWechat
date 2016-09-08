@@ -2,19 +2,24 @@
     'use strict';
 
     angular.module("app")
-        .config(['CacheFactoryProvider', '$cookiesProvider','$ionicConfigProvider', function (CacheFactoryProvider, $cookiesProvider,$ionicConfigProvider) {
+        .config(['CacheFactoryProvider', '$cookiesProvider','$ionicConfigProvider','$ionicFilterBarConfigProvider', function (CacheFactoryProvider, $cookiesProvider,$ionicConfigProvider,$ionicFilterBarConfigProvider) {
             angular.extend($cookiesProvider.defaults, {
                 path: "/"
             });
             angular.extend(CacheFactoryProvider.defaults, {maxAge: 1}); //缓存10s
 
-            //$ionicConfigProvider.views.transition('none');
-            $ionicConfigProvider.views.swipeBackEnabled(false);
-            $ionicConfigProvider.tabs.style("striped");
-            $ionicConfigProvider.views.maxCache(0);
+            $ionicConfigProvider.views.transition('ios');
+            $ionicConfigProvider.views.swipeBackEnabled(true);
             $ionicConfigProvider.scrolling.jsScrolling(false);
             $ionicConfigProvider.platform.android.views.maxCache(0);
 
+
+             $ionicFilterBarConfigProvider.theme('positive');
+             $ionicFilterBarConfigProvider.clear('ion-close');
+             $ionicFilterBarConfigProvider.search('ion-search');
+             $ionicFilterBarConfigProvider.backdrop(false);
+             $ionicFilterBarConfigProvider.transition('vertical');
+             $ionicFilterBarConfigProvider.placeholder('Filter');
 
         }])
         .run(['$http', 'CacheFactory', function ($http, CacheFactory) {

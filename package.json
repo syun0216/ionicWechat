@@ -4,7 +4,8 @@
   "description": "a project of ionic and angular",
   "main": "gulp.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init": "npm install"
   },
     "dependencies": {
     "gulp-concat": "^2.6.0",
@@ -43,9 +44,6 @@
     "jshint-stylish": "~2.0.0",
     "wiredep": "~2.2.0",
     "yargs": "~3.29.0"
-  },
-  "scripts": {
-    "init": "npm install"
   },
   "repository": {
     "type": "git",
