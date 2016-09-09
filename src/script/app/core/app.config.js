@@ -49,31 +49,21 @@
         .service("appConfig", ['$cookies', function ($cookies) {
             var config = {};
             config.mode = 'dev';
-            //config.regionId = $cookies.get("regionId");
-            //config.phone = $cookies.get("phone");
             config.providerType = "送水";
-            config.staticServer = "http://app.wang-guanjia.com";
             switch (config.mode) {
                 case 'debug':
-                    config.applianceService = "http://192.168.1.89:9095/einsurance-service";
+                    config.applianceService = "";
                     break;
                 case 'dev':
-                    config.businessService = "http://120.76.163.231:8080/vmanagerStore";
-                    config.orderList ="vmanager://web?url="+encodeURIComponent("http://112.74.25.112/app/#/order/list");
-                    if ($cookies.get("regionId") == null)
-                       $cookies.put("regionId", "A3B16F7E-14A8-424B-AD7F-5B68889E5C3A");
-                    if ($cookies.get("phone") == null)
-                       // $cookies.put("phone", "13202439389");
-                       // $cookies.put("phone", "13166001707");
-                       $cookies.put("phone", "18676576551");
+                    config.businessService = "";
                     break;
                 case 'p':
-                    config.apiService = "http://api.wang-guanjia.com";
-                    config.staticServer = "http://admin.wang-guanjia.com";
+                    config.apiService = "";
+                    config.staticServer = "";
                     break;
                 case 'product':
-                    config.apiService = "http://api.wang-guanjia.com";
-                    config.staticServer = "http://admin.wang-guanjia.com";
+                    config.apiService = "";
+                    config.staticServer = "";
                     break;
             }
 
