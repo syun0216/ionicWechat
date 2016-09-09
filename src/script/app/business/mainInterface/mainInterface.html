@@ -124,96 +124,21 @@
                         <ion-content overflow-scroll='true' style="background: #efefef" scroll="true"
                                      direction="y">
                             <ion-list >
-                                <ion-item>
-                                    <ion-spinner icon="spiral"></ion-spinner>
+                                <ion-item ng-repeat="item in itemData" ng-click="goToMyItemDetail(item.title)">
+                                    <ion-spinner icon="{{item.spinner}}"></ion-spinner>
+                                    <span>{{item.title}}</span>
                                     <ion-option-button style="padding: 0 30px;" class="button-positive icon ion-edit"
                                     >编辑
                                     </ion-option-button>
                                     <ion-option-button style="padding: 0 30px;"
-                                                       class="button-assertive icon ion-ios-trash-outline">
+                                                       class="button-assertive icon ion-ios-trash-outline" ng-click="deleteItem(item)">
                                         移除
                                     </ion-option-button>
                                 </ion-item>
-                                <ion-item>
-                                    <ion-spinner icon="android"></ion-spinner>
-                                    <ion-option-button style="padding: 0 30px;" class="button-positive icon ion-edit"
-                                    >编辑
-                                    </ion-option-button>
-                                    <ion-option-button style="padding: 0 30px;"
-                                                       class="button-assertive icon ion-ios-trash-outline">
-                                        移除
-                                    </ion-option-button>
-                                </ion-item>
-                                <ion-item>
-                                    <ion-spinner icon="ios"></ion-spinner>
-                                    <ion-option-button style="padding: 0 30px;" class="button-positive icon ion-edit"
-                                    >编辑
-                                    </ion-option-button>
-                                    <ion-option-button style="padding: 0 30px;"
-                                                       class="button-assertive icon ion-ios-trash-outline">
-                                        移除
-                                    </ion-option-button>
-                                </ion-item>
-                                <ion-item>
-                                    <ion-spinner icon="ios-small"></ion-spinner>
-                                    <ion-option-button style="padding: 0 30px;" class="button-positive icon ion-edit"
-                                    >编辑
-                                    </ion-option-button>
-                                    <ion-option-button style="padding: 0 30px;"
-                                                       class="button-assertive icon ion-ios-trash-outline">
-                                        移除
-                                    </ion-option-button>
-                                </ion-item>
-                                <ion-item>
-                                    <ion-spinner icon="bubbles"></ion-spinner>
-                                    <ion-option-button style="padding: 0 30px;" class="button-positive icon ion-edit"
-                                    >编辑
-                                    </ion-option-button>
-                                    <ion-option-button style="padding: 0 30px;"
-                                                       class="button-assertive icon ion-ios-trash-outline">
-                                        移除
-                                    </ion-option-button>
-                                </ion-item>
-                                <ion-item>
-                                    <ion-spinner icon="circles"></ion-spinner>
-                                    <ion-option-button style="padding: 0 30px;" class="button-positive icon ion-edit"
-                                    >编辑
-                                    </ion-option-button>
-                                    <ion-option-button style="padding: 0 30px;"
-                                                       class="button-assertive icon ion-ios-trash-outline">
-                                        移除
-                                    </ion-option-button>
-                                </ion-item>
-                                <ion-item>
-                                    <ion-spinner icon="lines"></ion-spinner>
-                                    <ion-option-button style="padding: 0 30px;" class="button-positive icon ion-edit"
-                                    >编辑
-                                    </ion-option-button>
-                                    <ion-option-button style="padding: 0 30px;"
-                                                       class="button-assertive icon ion-ios-trash-outline">
-                                        移除
-                                    </ion-option-button>
-                                </ion-item>
-                                <ion-item>
-                                    <ion-spinner icon="ripple"></ion-spinner>
-                                    <ion-option-button style="padding: 0 30px;" class="button-positive icon ion-edit"
-                                    >编辑
-                                    </ion-option-button>
-                                    <ion-option-button style="padding: 0 30px;"
-                                                       class="button-assertive icon ion-ios-trash-outline">
-                                        移除
-                                    </ion-option-button>
-                                </ion-item>
-                                <ion-item>
-                                    <ion-spinner icon="dots"></ion-spinner>
-                                    <ion-option-button style="padding: 0 30px;" class="button-positive icon ion-edit"
-                                    >编辑
-                                    </ion-option-button>
-                                    <ion-option-button style="padding: 0 30px;"
-                                                       class="button-assertive icon ion-ios-trash-outline">
-                                        移除
-                                    </ion-option-button>
-                                </ion-item>
+                            <button class="button button-assertive button-block button-full"
+                                    ng-click="showConfirm()">
+                                退出
+                            </button>
                             </ion-list>
                         </ion-content>
                     </ion-view>
@@ -229,7 +154,7 @@
                         </ion-nav-title>
                     </ion-nav-bar>
                 </ion-header-bar>
-                <ion-content>
+                <ion-content overflow-scroll='true'>
                     <ion-list>
                         <ion-checkbox>Red</ion-checkbox>
                         <ion-checkbox>Yellow</ion-checkbox>
@@ -238,11 +163,22 @@
                         <ion-radio ng-model="choice" ng-value="'B'">Choose B</ion-radio>
                         <ion-radio ng-model="choice" ng-value="'C'">Choose C</ion-radio>
                         <ion-toggle ng-model="airplaneMode">Airplane Mode</ion-toggle>
+                        <div class="item range">
+                            <i class="icon ion-volume-low"></i>
+                            <input type="range" name="volume">
+                            <i class="icon ion-volume-high"></i>
+                        </div>
+                        <a class="item item-icon-left item-icon-right" href="#">
+                            <i class="icon ion-chatbubble-working"></i>
+                            Call Me
+                            <i class="icon ion-ios-telephone-outline"></i>
+                        </a>
+                        <a class="item item-avatar" href="#">
+                            <img src="assets/images/fire.png">
+                            <h2>Venkman</h2>
+                            <p>Back off, man. I'm a scientist.</p>
+                        </a>
                     </ion-list>
-                    <button class="button button-assertive button-block button-full" style="position: absolute;bottom: -6px;"
-                            ng-click="showConfirm()">
-                        退出
-                    </button>
                 </ion-content>
             </ion-view>
         </ion-side-menu>

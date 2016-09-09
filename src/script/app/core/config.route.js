@@ -17,7 +17,8 @@
                 url: 'business/mainInterface/:name',
                 tpl: 'business/mainInterface/mainInterface'
             },
-            {name:'BusinessItem',ctrl:'BusinessItemCtrl',url:'business/item/:itemName',tpl:'business/item/item'}
+            {name:'BusinessItem',ctrl:'BusinessItemCtrl',url:'business/item/:itemName',tpl:'business/item/item'},
+            {name:'BusinessMyItem',ctrl:'BusinessMyItemCtrl',url:'business/myItem/:type',tpl:'business/myItem/myItem'}
         ];
 
         setRoutes = function (route) {

@@ -10,6 +10,30 @@
         if ($scope.myName == null) {
             $scope.myName = $cookieStore.get('username');
         }
+
+        //TODO:reorder the list
+        //item spinner的数据 在我的页面
+        $scope.itemData = [
+            {spinner:"spiral",title:'cards'},
+            {spinner:"android",title:'Forms'},
+            {spinner:"ios",title:'select'},
+            {spinner:"ios-small",title:'buttons'},
+            {spinner:"bubbles",title:'toggle'},
+            {spinner:"circles",title:'checkbox'},
+            {spinner:"lines",title:'range'},
+            {spinner:"ripple",title:'select'},
+            {spinner:"dots",title:'tab'}
+        ];
+        //删除项目
+        $scope.deleteItem = function (item) {
+            $scope.itemData.forEach(function(data){
+                if(data == item){
+                    $scope.itemData.splice($scope.itemData.indexOf(data),1);
+                }
+            })
+        };
+
+        //侧边菜单栏退出
         $scope.clearCache = function () {
             localStorage.clear();
             $cookieStore.remove('username');
@@ -17,6 +41,27 @@
             $state.go("BusinessLogin")
         };
 
+        $scope.showConfirm = function () {
+            var confirmPopup = $ionicPopup.confirm({
+                title: 'Logout',
+                template: '你确定退出吗?',
+                buttons:[{
+                    text:"取消",
+                    type:"button-default",
+                    onTap: function (e) {
+                        return null;
+                    }
+                },{
+                    text:"确定",
+                    type:"button-assertive",
+                    onTap: function (e) {
+                        $scope.clearCache();
+                    }
+                }]
+            });
+        };
+
+        //搜索框控件
         var filterBarInstance;
 
         function getItems() {
@@ -52,33 +97,13 @@
                 $scope.$broadcast('scroll.refreshComplete');
             }, 1000);
         };
-
+        //点击itemList里的项目跳转到item页面
         $scope.goToItemDetail = function (item) {
             $state.go('BusinessItem', {itemName: item.text});
-        }
-
+        };
+        //菜单侧滑出来
         $scope.toggleLeft = function () {
             $ionicSideMenuDelegate.toggleLeft();
-        };
-
-        $scope.showConfirm = function () {
-            var confirmPopup = $ionicPopup.confirm({
-                title: 'Logout',
-                template: '你确定退出吗?',
-                buttons:[{
-                    text:"取消",
-                    type:"button-default",
-                    onTap: function (e) {
-                       return null;
-                    }
-                },{
-                    text:"确定",
-                    type:"button-assertive",
-                    onTap: function (e) {
-                        $scope.clearCache();
-                    }
-                }]
-            });
         };
 
         //日历控件
@@ -134,11 +159,15 @@
         $scope.$on('modal1.removed', function() {
             // Execute action
         });
-
+        //点击确定阅读的逻辑
         $scope.check = false;
         $scope.confirmRoles = function () {
             $scope.check = true;
             $scope.closeModal1();
+        };
+        //我的tab 进入myItem页面
+        $scope.goToMyItemDetail = function (type) {
+            $state.go('BusinessMyItem',{type:type});
         }
     }
 })();
