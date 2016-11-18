@@ -5,8 +5,6 @@
 (function () {
     'use strict';
     angular.module("app.business",[
-        'app.core',
-        'jett.ionic.filter.bar',
-        'ionic-datepicker'
+        'app.core'
     ])
 })();

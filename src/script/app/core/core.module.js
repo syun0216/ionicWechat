@@ -3,6 +3,6 @@
 
     angular.module("app.core",[ 
         'ngCookies',
-        'angular-cache'
+        'angular-cache',
     ]);
 })();

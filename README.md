@@ -11,6 +11,8 @@
 * ionic datepicker (https://github.com/rajeshwarpatlolla/ionic-datepicker)
 
 * 用到的ionic模块 ionicModal、ionicPopup、ionicSideMenu、ionicTab...
+
+* 最近加入模块:es2015支持,angular语法规范(esLint);
 ----------
 ### 打包发布
 * gulp build ----》 web app 就放到服务器上

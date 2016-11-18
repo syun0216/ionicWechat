@@ -124,7 +124,7 @@
             to: new Date(2016, 10, 30), //Optional
             inputDate: new Date(),      //Optional
             mondayFirst: true,          //Optional
-            disableWeekdays: [0],       //Optional
+            disableWeekdays: [],       //Optional
             closeOnSelect: false,       //Optional
             templateType: 'popup'       //Optional
         };

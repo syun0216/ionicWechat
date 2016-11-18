@@ -1,8 +1,8 @@
-var gulp = require('gulp');
+import gulp from 'gulp';
+import browserSync from 'browser-sync';
+import del from "del";
 var args = require('yargs').argv;
-var browserSync = require('browser-sync');
 var config = require('./gulp.config')();
-var del = require('del');
 var $ = require('gulp-load-plugins')({lazy: true});
 
 gulp.task('help', $.taskListing);
