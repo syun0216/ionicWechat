@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('app')
-        .config(['$stateProvider', '$urlRouterProvider', routeConfig]);
-
+        .config(routeConfig);
+    routeConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
     function routeConfig($stateProvider, $urlRouterProvider) {
 

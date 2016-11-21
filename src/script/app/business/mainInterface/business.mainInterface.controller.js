@@ -4,8 +4,9 @@
  */
 (function () {
     angular.module("app.business")
-        .controller("BusinessMainInterfaceCtrl", ['$scope', '$stateParams', '$cookieStore', '$state', '$ionicFilterBar','ionicDatePicker', '$ionicSideMenuDelegate', '$ionicPopup','$ionicModal', BusinessMainInterfaceCtrl]);
-    function BusinessMainInterfaceCtrl($scope, $stateParams, $cookieStore, $state, $ionicFilterBar,ionicDatePicker, $ionicSideMenuDelegate, $ionicPopup,$ionicModal) {
+        .controller("BusinessMainInterfaceCtrl", BusinessMainInterfaceCtrl);
+    BusinessMainInterfaceCtrl.$inject = ['$scope', '$stateParams', '$cookieStore', '$state', '$ionicFilterBar', 'ionicDatePicker', '$ionicSideMenuDelegate','AppService', '$ionicModal'];
+    function BusinessMainInterfaceCtrl($scope, $stateParams, $cookieStore, $state, $ionicFilterBar, ionicDatePicker, $ionicSideMenuDelegate, AppService,$ionicModal) {
         $scope.myName = $stateParams.name == null ? $cookieStore.get('username') : $stateParams.name;
         if ($scope.myName == null) {
             $scope.myName = $cookieStore.get('username');
@@ -14,21 +15,21 @@
         //TODO:reorder the list
         //item spinner的数据 在我的页面
         $scope.itemData = [
-            {spinner:"spiral",title:'cards'},
-            {spinner:"android",title:'Forms'},
-            {spinner:"ios",title:'select'},
-            {spinner:"ios-small",title:'buttons'},
-            {spinner:"bubbles",title:'toggle'},
-            {spinner:"circles",title:'checkbox'},
-            {spinner:"lines",title:'range'},
-            {spinner:"ripple",title:'select'},
-            {spinner:"dots",title:'tab'}
+            {spinner: "spiral", title: 'cards'},
+            {spinner: "android", title: 'Forms'},
+            {spinner: "ios", title: 'select'},
+            {spinner: "ios-small", title: 'buttons'},
+            {spinner: "bubbles", title: 'toggle'},
+            {spinner: "circles", title: 'checkbox'},
+            {spinner: "lines", title: 'range'},
+            {spinner: "ripple", title: 'select'},
+            {spinner: "dots", title: 'tab'}
         ];
         //删除项目
         $scope.deleteItem = function (item) {
-            $scope.itemData.forEach(function(data){
-                if(data == item){
-                    $scope.itemData.splice($scope.itemData.indexOf(data),1);
+            $scope.itemData.forEach(function (data) {
+                if (data == item) {
+                    $scope.itemData.splice($scope.itemData.indexOf(data), 1);
                 }
             })
         };
@@ -42,23 +43,7 @@
         };
 
         $scope.showConfirm = function () {
-            var confirmPopup = $ionicPopup.confirm({
-                title: 'Logout',
-                template: '你确定退出吗?',
-                buttons:[{
-                    text:"取消",
-                    type:"button-default",
-                    onTap: function (e) {
-                        return null;
-                    }
-                },{
-                    text:"确定",
-                    type:"button-assertive",
-                    onTap: function (e) {
-                        $scope.clearCache();
-                    }
-                }]
-            });
+            AppService.ionicConfirm('Logout','你确定退出吗?',$scope.clearCache,null,null,null,null);
         };
 
         //搜索框控件
@@ -107,30 +92,8 @@
         };
 
         //日历控件
-        var ipObj1 = {
-            callback: function (val) {  //Mandatory
-                console.log('Return value from the datepicker popup is : ' + val, new Date(val));
-            },
-            disabledDates: [            //Optional
-                new Date(2016, 2, 16),
-                new Date(2015, 3, 16),
-                new Date(2015, 4, 16),
-                new Date(2015, 5, 16),
-                new Date('Wednesday, August 12, 2015'),
-                new Date("08-16-2016"),
-                new Date(1439676000000)
-            ],
-            from: new Date(2012, 1, 1), //Optional
-            to: new Date(2016, 10, 30), //Optional
-            inputDate: new Date(),      //Optional
-            mondayFirst: true,          //Optional
-            disableWeekdays: [],       //Optional
-            closeOnSelect: false,       //Optional
-            templateType: 'popup'       //Optional
-        };
-
-        $scope.openDatePicker = function(){
-            ionicDatePicker.openDatePicker(ipObj1);
+        $scope.openDatePicker = function () {
+            AppService.ionDatePicker(new Date(),new Date(2017,0,2),new Date());
         };
 
         //modal
@@ -138,25 +101,25 @@
         $ionicModal.fromTemplateUrl('modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function(modal) {
+        }).then(function (modal) {
             $scope.modal1 = modal;
         });
-        $scope.openModal1 = function() {
+        $scope.openModal1 = function () {
             $scope.modal1.show();
         };
-        $scope.closeModal1 = function() {
+        $scope.closeModal1 = function () {
             $scope.modal1.hide();
         };
         // Cleanup the modal when we're done with it!
-        $scope.$on('$destroy', function() {
+        $scope.$on('$destroy', function () {
             $scope.modal1.remove();
         });
         // Execute action on hide modal
-        $scope.$on('modal1.hidden', function() {
+        $scope.$on('modal1.hidden', function () {
             // Execute action
         });
         // Execute action on remove modal
-        $scope.$on('modal1.removed', function() {
+        $scope.$on('modal1.removed', function () {
             // Execute action
         });
         //点击确定阅读的逻辑
@@ -167,7 +130,7 @@
         };
         //我的tab 进入myItem页面
         $scope.goToMyItemDetail = function (type) {
-            $state.go('BusinessMyItem',{type:type});
+            $state.go('BusinessMyItem', {type: type});
         }
     }
 })();

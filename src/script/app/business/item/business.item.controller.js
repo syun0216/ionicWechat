@@ -14,7 +14,11 @@
             $scope.showFunc = {
                 showLoading(){AppService.ionicLoadingShow("加载中",3000)},
                 showAlert(){AppService.ionicAlert("haha","hahahahah","确定")},
-                showConfirm(){AppService.ionicConfirm("tips","nihao","yes",null,null,null,this.clickToCallBack())},
+                showConfirm(){AppService.ionicConfirm("tips","nihao",this.clickToCallBack,"yes",null,null,null)},
+                showToast(){
+                    "use strict";
+                    AppService.ionToast("This is the content",null,1000);
+                },
                 clickToCallBack(){
                     "use strict";
                     console.log(111);

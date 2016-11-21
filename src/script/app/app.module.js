@@ -5,6 +5,7 @@
         'app.core',
         'app.business',
         'jett.ionic.filter.bar',
-        'ionic-datepicker'
+        'ionic-datepicker',
+        'ionic-toast'
     ])
 })();

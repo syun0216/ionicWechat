@@ -2,9 +2,8 @@
     'use strict';
 
     angular.module("app")
-        .directive("goClick",['$location',goClick])
-    
-
+        .directive("goClick",goClick);
+    goClick.$inject = ['$location'];
     function goClick($location) {
         return function (scope, element, attrs) {
             var path;

@@ -33,9 +33,9 @@
 
         var datePickerObj = {
             inputDate: new Date(),
-            setLabel: 'Set',
-            todayLabel: 'Today',
-            closeLabel: 'Close',
+            setLabel: '设定',
+            todayLabel: '今天',
+            closeLabel: '关闭',
             mondayFirst: false,
             weeksList: ["S", "M", "T", "W", "T", "F", "S"],
             monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
