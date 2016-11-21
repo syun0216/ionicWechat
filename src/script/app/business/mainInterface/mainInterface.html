@@ -1,4 +1,4 @@
-<ion-view view-title="首页" cache-view="false">
+<ion-view view-title="首页" cache-view="false" ng-controller="BusinessMainInterfaceCtrl as mainInterface">
     <ion-side-menus>
         <ion-side-menu-content>
             <ion-tabs class="tabs-stable tabs-icon-top">
@@ -66,8 +66,9 @@
                             </ion-list>
                             <ion-list>
                                 <ion-item>
-                                    <button class="button button-assertive button-block" ng-click="openDatePicker()">日期控件</button>
+                                    <button class="button button-assertive button-block" ng-click="mainInterface.openDatePicker(date)">日期控件</button>
                                 </ion-item>
+                                <ion-item ng-bind="date"/>
                             </ion-list>
                             <ion-list>
                                 <ion-item>
@@ -124,7 +125,7 @@
                         <ion-content overflow-scroll='true' style="background: #efefef" scroll="true"
                                      direction="y">
                             <ion-list >
-                                <ion-item ng-repeat="item in itemData" ng-click="goToMyItemDetail(item.title)">
+                                <ion-item ng-repeat="item in mainInterface.itemData" ng-click="goToMyItemDetail(item.title)">
                                     <ion-spinner icon="{{item.spinner}}"></ion-spinner>
                                     <span>{{item.title}}</span>
                                     <ion-option-button style="padding: 0 30px;" class="button-positive icon ion-edit"
@@ -188,14 +189,14 @@
 <script id="modal.html" type="text/ng-template">
     <ion-modal-view>
         <ion-header-bar>
-           <ion-nav-bar>
-               <ion-nav-buttons side="primary">
-                   <button class="button button-icon ion-arrow-left-c icon" ng-click="closeModal1()"></button>
-               </ion-nav-buttons>
-               <ion-nav-title>
-                   <span>相关规定</span>
-               </ion-nav-title>
-           </ion-nav-bar>
+            <ion-nav-bar>
+                <ion-nav-buttons side="primary">
+                    <button class="button button-icon ion-arrow-left-c icon" ng-click="closeModal1()"></button>
+                </ion-nav-buttons>
+                <ion-nav-title>
+                    <span>相关规定</span>
+                </ion-nav-title>
+            </ion-nav-bar>
         </ion-header-bar>
         <ion-content>
             <ion-list>

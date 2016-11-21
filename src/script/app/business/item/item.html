@@ -1,7 +1,7 @@
-<ion-view cache-view="false">
+<ion-view cache-view="false" ng-controller="BusinessItemCtrl as item">
     <ion-nav-bar>
         <ion-nav-buttons side="primary">
-            <button class="button button-icon icon ion-arrow-left-c" ng-click="goBack()">
+            <button class="button button-icon icon ion-arrow-left-c" ng-click="item.goBack()">
             </button>
         </ion-nav-buttons>
         <ion-nav-title>
@@ -9,10 +9,10 @@
         </ion-nav-title>
     </ion-nav-bar>
     <ion-content>
-        This is {{itemName}} !
-        <button class="button button-assertive button-block" ng-click="showFunc.showLoading()">show ionicLoading</button>
-        <button class="button button-assertive button-block" ng-click="showFunc.showAlert()">show ionicAlert</button>
-        <button class="button button-assertive button-block" ng-click="showFunc.showConfirm()">show ionicConfirm</button>
-        <button class="button button-assertive button-block" ng-click="showFunc.showToast()">show ionicToast</button>
+        This is {{item.itemName}} !
+        <button class="button button-assertive button-block" ng-click="item.showFunc.showLoading()">show ionicLoading</button>
+        <button class="button button-assertive button-block" ng-click="item.showFunc.showAlert()">show ionicAlert</button>
+        <button class="button button-assertive button-block" ng-click="item.showFunc.showConfirm()">show ionicConfirm</button>
+        <button class="button button-assertive button-block" ng-click="item.showFunc.showToast()">show ionicToast</button>
     </ion-content>
 </ion-view>

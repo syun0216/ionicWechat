@@ -5,13 +5,13 @@
 (function () {
     angular.module("app.business")
         .controller("BusinessItemCtrl",BusinessItemCtrl);
-        BusinessItemCtrl.$inject = ['$scope','$stateParams','AppUtils'];
-        function BusinessItemCtrl($scope,$stateParams,AppUtils){
-            $scope.itemName = $stateParams.itemName;
-            $scope.goBack = function () {
+        BusinessItemCtrl.$inject = ['$stateParams','AppUtils'];
+        function BusinessItemCtrl($stateParams,AppUtils){
+            this.itemName = $stateParams.itemName;
+            this.goBack = function () {
                 AppUtils.stateGo('BusinessMainInterface',null,"back")
             };
-            $scope.showFunc = {
+            this.showFunc = {
                 showLoading(){AppUtils.ionicLoadingShow("加载中",3000)},
                 showAlert(){AppUtils.ionicAlert("haha","hahahahah","确定")},
                 showConfirm(){AppUtils.ionicConfirm("tips","nihao",this.clickToCallBack,"yes",null,null,null)},
@@ -21,7 +21,7 @@
                 },
                 clickToCallBack(){
                     "use strict";
-                    console.log(111);
+                    AppUtils._log("itemName",$stateParams.itemName);
                 }
             };
 

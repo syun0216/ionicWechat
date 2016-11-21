@@ -23,6 +23,9 @@
                     }, timeout);
                 }
             },
+            ionicLoadingHide(){
+                $ionicLoading.hide();
+            },
             ionicAlert(title, template, btn, style){
                 let alertTitle = angular.isUndefined(title) ? "提示" : title;
                 let templateContent = angular.isUndefined(template) ? "" : template;
@@ -63,7 +66,7 @@
                     }
                 });
             },
-            ionDatePicker(from,to,inputDate,disabledDates,disableWeekdays,templateType){
+            ionDatePicker(from,to,inputDate,callback,disabledDates,disableWeekdays,templateType){
                 /*
                  inputDate:用于选择默认的日期,默认日期为今天
                  disabledDates(Optional) : 用于禁止点击某些指定的日期. Default value is an empty array.
@@ -77,7 +80,7 @@
                 let obj = {
                     callback(val){
                         let value = new Date(val);
-                        console.log([value.getFullYear(), value.getMonth() + 1, value.getDate()].join("-")) ;
+                        callback([value.getFullYear(), value.getMonth() + 1, value.getDate()].join("-"));
                     },
                     mondayFirst:true,
                     closeOnSelect:false,
@@ -98,19 +101,6 @@
                 obj.stick = false;
                 ionicToast.show(obj.message,obj.position,obj.stick,obj.timeout);
             },
-            saveRouteInfo(info){
-                /*
-                用于存储app运行中路由栈信息
-                 */
-                this.routeInfo = info;
-            },
-            judgeRouteLocationWithRouteName(name){
-                /*
-                用于判断当前路由栈的位置,如果相等则返回true
-                 */
-                console.log(this.routeInfo.name == name);
-                return this.routeInfo.name == name;
-            },
             hardWareBack(pathName){
 
             },
@@ -118,14 +108,19 @@
                 /*
                 全局console.log ,若要禁止则改成 return null
                  */
-                console.log(name+" :  "+data);
+                if(angular.isUndefined(data)){
+                    console.log(name);
+                }
+                else{
+                    console.log(name+" :  "+data);
+                }
                 // return null;
             },
             stateGo(name,params,direction,isReload){
                 /*
-                name:string,
-                params:Object,
-                direction:"forward" or "back",
+                name:string,required
+                params:Object,required
+                direction:"forward" or "back",required,default:forward
                 isReload:boolean,optional
                  */
                 this.direction = angular.isUndefined(direction) ? "forward" : direction;
@@ -134,7 +129,7 @@
                 }
                 $state.go(name,params,isReload);
                 $ionicViewSwitcher.nextDirection(this.direction);
-            }
+            },
         }
     }
 })();

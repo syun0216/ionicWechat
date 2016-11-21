@@ -5,18 +5,17 @@
 (function () {
     angular.module("app.business")
         .controller("BusinessMainInterfaceCtrl", BusinessMainInterfaceCtrl);
-    BusinessMainInterfaceCtrl.$inject = ['$scope', '$stateParams', '$cookieStore', '$state', '$ionicFilterBar', '$ionicSideMenuDelegate','AppUtils', '$ionicModal','$ionicHistory'];
-    function BusinessMainInterfaceCtrl($scope, $stateParams, $cookieStore, $state, $ionicFilterBar, $ionicSideMenuDelegate, AppUtils,$ionicModal,$ionicHistory) {
+    BusinessMainInterfaceCtrl.$inject = [ '$scope','$stateParams', '$cookieStore', '$ionicFilterBar', '$ionicSideMenuDelegate','AppUtils', '$ionicModal'];
+    function BusinessMainInterfaceCtrl( $scope,$stateParams, $cookieStore, $ionicFilterBar, $ionicSideMenuDelegate, AppUtils,$ionicModal) {
         $scope.myName = $stateParams.name == null ? $cookieStore.get('username') : $stateParams.name;
         if ($scope.myName == null) {
             $scope.myName = $cookieStore.get('username');
         }
 
 
-
         //TODO:reorder the list
         //item spinner的数据 在我的页面
-        $scope.itemData = [
+        this.itemData = [
             {spinner: "spiral", title: 'cards'},
             {spinner: "android", title: 'Forms'},
             {spinner: "ios", title: 'select'},
@@ -41,7 +40,7 @@
             localStorage.clear();
             $cookieStore.remove('username');
             sessionStorage.clear();
-            $state.go("BusinessLogin")
+            AppUtils.stateGo("BusinessLogin",null);
         };
 
         $scope.showConfirm = function () {
@@ -54,7 +53,7 @@
         function getItems() {
             var items = [];
             for (var x = 1; x < 2000; x++) {
-                items.push({text: 'This is item number ' + x + ' which is an ' + (x % 2 === 0 ? 'EVEN' : 'ODD') + ' number.'});
+                items.push({text: '$scope is item number ' + x + ' which is an ' + (x % 2 === 0 ? 'EVEN' : 'ODD') + ' number.'});
             }
             $scope.items = items;
         }
@@ -86,7 +85,7 @@
         };
         //点击itemList里的项目跳转到item页面
         $scope.goToItemDetail = function (item) {
-            $state.go('BusinessItem', {itemName: item.text});
+            AppUtils.stateGo('BusinessItem',{itemName: item.text});
         };
         //菜单侧滑出来
         $scope.toggleLeft = function () {
@@ -94,8 +93,13 @@
         };
 
         //日历控件
-        $scope.openDatePicker = function () {
-            AppUtils.ionDatePicker(new Date(),new Date(2017,0,2),new Date());
+        this.day = new Date();
+        $scope.date = [this.day.getFullYear(),this.day.getMonth() + 1,this.day.getDate()].join("-");
+        this.openDatePicker = function (date) {
+            AppUtils.ionDatePicker(new Date(),new Date(2017,0,2),new Date(date),(val)=>{
+                "use strict";
+                $scope.date = val;
+            });
         };
 
         //modal

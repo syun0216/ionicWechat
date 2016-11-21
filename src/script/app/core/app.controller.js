@@ -3,14 +3,13 @@
 
     angular.module("app")
         .controller("AppCtrl",AppCtrl);
-        AppCtrl.$inject = ['$state','$rootScope','$cookieStore','BusinessLoginService'];
-        function AppCtrl($state,$rootScope,$cookieStore,BusinessLoginService){
+        AppCtrl.$inject = ['AppUtils'];
+        function AppCtrl(AppUtils){
         if(localStorage.username != undefined && localStorage.username!=null){
-            $state.go('BusinessMainInterface',{id:localStorage.username});
+            AppUtils.stateGo("BusinessMainInterface",{id:localStorage.username},"forward")
         }
         else{
-            $state.go('BusinessLogin');
+            AppUtils.stateGo("BusinessLogin",null,"back");
         }
-
     }
 })();

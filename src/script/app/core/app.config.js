@@ -59,8 +59,12 @@
         });
 
         $rootScope.$on("$stateChangeStart",_stateChangeStart);
+        //监听路由位置
         function _stateChangeStart(event,toState,toParams,fromState,fromParams){
-            AppUtils.saveRouteInfo(toState);
+            if(toState.name == "BusinessItem"){
+                AppUtils.ionicLoadingShow("item加载中...",1000);
+            }
+
         }
     }
 
