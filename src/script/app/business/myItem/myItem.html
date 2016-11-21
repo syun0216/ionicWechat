@@ -1,11 +1,11 @@
-<ion-view view-title="myItem">
+<ion-view view-title="myItem" ng-controller="BusinessMyItemCtrl as myItem">
     <ion-header-bar>
         <ion-nav-bar>
             <ion-nav-title>
                 <span>myItem</span>
             </ion-nav-title>
             <ion-nav-buttons side="primary">
-                <button class="button button-icon icon ion-arrow-left-c" ng-click="goBack()"></button>
+                <button class="button button-icon icon ion-arrow-left-c" ng-click="myItem.goBack()"></button>
             </ion-nav-buttons>
         </ion-nav-bar>
     </ion-header-bar>
@@ -267,9 +267,9 @@
                 <ion-list>
                     <ion-list>
 
-                        <ion-checkbox ng-model="filter.red">Red</ion-checkbox>
-                        <ion-checkbox ng-model="filter.yellow">Yellow</ion-checkbox>
-                        <ion-checkbox ng-model="filter.pink">Pink</ion-checkbox>
+                        <ion-checkbox ng-model="myItem.filter.red">Red</ion-checkbox>
+                        <ion-checkbox ng-model="myItem.filter.yellow">Yellow</ion-checkbox>
+                        <ion-checkbox ng-model="myItem.filter.pink">Pink</ion-checkbox>
 
                     </ion-list>
                 </ion-list>

@@ -4,7 +4,8 @@
  */
 (function () {
     angular.module("app.business")
-        .service("BusinessLoginService", ['$http', 'appConfig', '$q', 'CacheFactory', BusinessLoginService]);
+        .service("BusinessLoginService", BusinessLoginService);
+    BusinessLoginService.$inject = ['$http', 'appConfig', '$q', 'CacheFactory'];
         function BusinessLoginService($http, appConfig, $q, CacheFactory){
 
         }

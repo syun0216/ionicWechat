@@ -6,10 +6,10 @@
 (function(){
     angular.module("app.business")
         .controller("BusinessMyItemCtrl",BusinessMyItemCtrl);
-        BusinessMyItemCtrl.$inject = ["$scope","$stateParams","$state"];
-        function BusinessMyItemCtrl($scope,$stateParams,$state){
-            $scope.goBack = function(){
-                $state.go('BusinessMainInterface');
+        BusinessMyItemCtrl.$inject = ["$scope","$stateParams","AppUtils"];
+        function BusinessMyItemCtrl($scope,$stateParams,AppUtils){
+            this.goBack = function(){
+                AppUtils.stateGo('BusinessMainInterface',null,"back");
             };
             $scope.typeOfItem = $stateParams.type;
         }
