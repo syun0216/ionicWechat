@@ -6,6 +6,6 @@
         'app.business',
         'jett.ionic.filter.bar',
         'ionic-datepicker',
-        'ionic-toast'
+        'ionic-toast',
     ])
 })();

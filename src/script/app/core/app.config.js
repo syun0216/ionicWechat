@@ -9,7 +9,7 @@
         .run(initRun)
         .service("appConfig", initService);
     initConfig.$inject = ['CacheFactoryProvider', '$cookiesProvider', '$ionicConfigProvider', '$ionicFilterBarConfigProvider','ionicDatePickerProvider'];
-    initRun.$inject = ['$http', 'CacheFactory'];
+    initRun.$inject = ['$http', 'CacheFactory','$rootScope','AppUtils'];
     initService.$inject = ['$cookies'];
 
     function initConfig(CacheFactoryProvider, $cookiesProvider, $ionicConfigProvider, $ionicFilterBarConfigProvider,ionicDatePickerProvider) {
@@ -48,14 +48,20 @@
             disableWeekdays: []
         };
         ionicDatePickerProvider.configDatePicker(datePickerObj);
+
     }
 
-    function initRun($http, CacheFactory) {
+    function initRun($http, CacheFactory,$rootScope,AppUtils) {
         $http.defaults.cache = CacheFactory('defaultCache', {
             maxAge: 5 * 1000, // Items added to this cache expire after 15 minutes
             cacheFlushInterval: 5 * 1000, // This cache will clear itself every hour
             deleteOnExpire: 'aggressive' // Items will be deleted from this cache when they expire
         });
+
+        $rootScope.$on("$stateChangeStart",_stateChangeStart);
+        function _stateChangeStart(event,toState,toParams,fromState,fromParams){
+            AppUtils.saveRouteInfo(toState);
+        }
     }
 
     function initService() {

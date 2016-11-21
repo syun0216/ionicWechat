@@ -5,12 +5,14 @@
 (function () {
     angular.module("app.business")
         .controller("BusinessMainInterfaceCtrl", BusinessMainInterfaceCtrl);
-    BusinessMainInterfaceCtrl.$inject = ['$scope', '$stateParams', '$cookieStore', '$state', '$ionicFilterBar', 'ionicDatePicker', '$ionicSideMenuDelegate','AppService', '$ionicModal'];
-    function BusinessMainInterfaceCtrl($scope, $stateParams, $cookieStore, $state, $ionicFilterBar, ionicDatePicker, $ionicSideMenuDelegate, AppService,$ionicModal) {
+    BusinessMainInterfaceCtrl.$inject = ['$scope', '$stateParams', '$cookieStore', '$state', '$ionicFilterBar', '$ionicSideMenuDelegate','AppUtils', '$ionicModal','$ionicHistory'];
+    function BusinessMainInterfaceCtrl($scope, $stateParams, $cookieStore, $state, $ionicFilterBar, $ionicSideMenuDelegate, AppUtils,$ionicModal,$ionicHistory) {
         $scope.myName = $stateParams.name == null ? $cookieStore.get('username') : $stateParams.name;
         if ($scope.myName == null) {
             $scope.myName = $cookieStore.get('username');
         }
+
+
 
         //TODO:reorder the list
         //item spinner的数据 在我的页面
@@ -43,7 +45,7 @@
         };
 
         $scope.showConfirm = function () {
-            AppService.ionicConfirm('Logout','你确定退出吗?',$scope.clearCache,null,null,null,null);
+            AppUtils.ionicConfirm('Logout','你确定退出吗?',$scope.clearCache,null,null,null,null);
         };
 
         //搜索框控件
@@ -93,7 +95,7 @@
 
         //日历控件
         $scope.openDatePicker = function () {
-            AppService.ionDatePicker(new Date(),new Date(2017,0,2),new Date());
+            AppUtils.ionDatePicker(new Date(),new Date(2017,0,2),new Date());
         };
 
         //modal
@@ -130,7 +132,7 @@
         };
         //我的tab 进入myItem页面
         $scope.goToMyItemDetail = function (type) {
-            $state.go('BusinessMyItem', {type: type});
+            AppUtils.stateGo('BusinessMyItem',{type:type},"forward")
         }
     }
 })();

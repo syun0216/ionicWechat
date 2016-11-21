@@ -6,10 +6,11 @@
 (function () {
     "use strict";
     angular.module("app")
-        .service("AppService", AppService);
-    AppService.$inject = ["$ionicLoading", "$timeout", "$ionicPopup", "ionicDatePicker","ionicToast"];
-    function AppService($ionicLoading, $timeout, $ionicPopup, ionicDatePicker,ionicToast) {
+        .service("AppUtils", AppUtils);
+    AppUtils.$inject = ["$ionicLoading", "$timeout", "$ionicPopup", "ionicDatePicker","ionicToast","$ionicHistory","$state","$ionicViewSwitcher"];
+    function AppUtils($ionicLoading, $timeout, $ionicPopup, ionicDatePicker,ionicToast,$ionicHistory,$state,$ionicViewSwitcher) {
         return {
+            routeInfo:null,
             ionicLoadingShow(content, timeout){
                 let loadingContent = angular.isUndefined(content) ? "正在载入中..." : content;
                 let isLoadingTimeOut = !angular.isUndefined(timeout);
@@ -96,8 +97,44 @@
                 obj.timeout = timeout == null ? "2000" :timeout;
                 obj.stick = false;
                 ionicToast.show(obj.message,obj.position,obj.stick,obj.timeout);
-            }
+            },
+            saveRouteInfo(info){
+                /*
+                用于存储app运行中路由栈信息
+                 */
+                this.routeInfo = info;
+            },
+            judgeRouteLocationWithRouteName(name){
+                /*
+                用于判断当前路由栈的位置,如果相等则返回true
+                 */
+                console.log(this.routeInfo.name == name);
+                return this.routeInfo.name == name;
+            },
+            hardWareBack(pathName){
 
+            },
+            _log(name,data){
+                /*
+                全局console.log ,若要禁止则改成 return null
+                 */
+                console.log(name+" :  "+data);
+                // return null;
+            },
+            stateGo(name,params,direction,isReload){
+                /*
+                name:string,
+                params:Object,
+                direction:"forward" or "back",
+                isReload:boolean,optional
+                 */
+                this.direction = angular.isUndefined(direction) ? "forward" : direction;
+                if(angular.isUndefined(name)||angular.isUndefined(params)) {
+                    return;
+                }
+                $state.go(name,params,isReload);
+                $ionicViewSwitcher.nextDirection(this.direction);
+            }
         }
     }
 })();
