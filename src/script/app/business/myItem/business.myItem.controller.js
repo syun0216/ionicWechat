@@ -8,9 +8,10 @@
         .controller("BusinessMyItemCtrl",BusinessMyItemCtrl);
         BusinessMyItemCtrl.$inject = ["$scope","$stateParams","AppUtils"];
         function BusinessMyItemCtrl($scope,$stateParams,AppUtils){
-            this.goBack = function(){
+            var vm = this;
+            vm.goBack = function(){
                 AppUtils.stateGo('BusinessMainInterface',null,"back");
             };
-            $scope.typeOfItem = $stateParams.type;
+            vm.typeOfItem = $stateParams.type;
         }
 })();

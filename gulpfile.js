@@ -1,8 +1,8 @@
-import gulp from 'gulp';
-import browserSync from 'browser-sync';
-import del from "del";
+var gulp = require('gulp');
 var args = require('yargs').argv;
+var browserSync = require('browser-sync');
 var config = require('./gulp.config')();
+var del = require('del');
 var $ = require('gulp-load-plugins')({lazy: true});
 
 gulp.task('help', $.taskListing);
@@ -78,7 +78,7 @@ gulp.task('sass', function() {
         .pipe($.sourcemaps.init())
         .pipe($.sass(sassOptions))
         .pipe($.sourcemaps.write())
-        .pipe(gulp.dest(config.client + 'assets/styles'));
+        .pipe(gulp.dest(config.client + '/assets/styles'));
 });
 
 gulp.task('sass-min', function() {
@@ -92,7 +92,7 @@ gulp.task('sass-min', function() {
         .src(config.sass)
         .pipe($.plumber())
         .pipe($.sass(sassOptions))
-        .pipe(gulp.dest(config.client + 'assets/styles'));
+        .pipe(gulp.dest(config.tmp + '/styles'));
 })
 
 gulp.task('sass-watcher', function() {
@@ -170,7 +170,7 @@ gulp.task('serve', ['inject', 'sass','jade'], function() {
 });
 
 gulp.task('build', ['optimize', 'copy'], function() {
-    startBrowserSync('dist');
+    // startBrowserSync('dist');
 })
 
 gulp.task('serve-dist', function() {

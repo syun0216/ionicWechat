@@ -1,4 +1,4 @@
-<ion-view view-title="myItem" ng-controller="BusinessMyItemCtrl as myItem">
+<ion-view view-title="myItem" >
     <ion-header-bar>
         <ion-nav-bar>
             <ion-nav-title>
@@ -10,7 +10,7 @@
         </ion-nav-bar>
     </ion-header-bar>
     <ion-content overflow-scroll='true'>
-        <ANY ng-switch="typeOfItem">
+        <ANY ng-switch="myItem.typeOfItem">
             <ANY ng-switch-when="cards"><ion-list>
                 <!----------------------------------------->
                 <a class="item item-thumbnail-left" href="#">

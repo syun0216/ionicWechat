@@ -7,10 +7,16 @@
     "use strict";
     angular.module("app")
         .service("AppUtils", AppUtils);
-    AppUtils.$inject = ["$ionicLoading", "$timeout", "$ionicPopup", "ionicDatePicker","ionicToast","$ionicHistory","$state","$ionicViewSwitcher"];
-    function AppUtils($ionicLoading, $timeout, $ionicPopup, ionicDatePicker,ionicToast,$ionicHistory,$state,$ionicViewSwitcher) {
+    AppUtils.$inject = ["$ionicLoading", "$timeout", "$ionicPopup", "ionicDatePicker","ionicToast","$ionicHistory","$state","$ionicViewSwitcher","$ionicPlatform"];
+    function AppUtils($ionicLoading, $timeout, $ionicPopup, ionicDatePicker,ionicToast,$ionicHistory,$state,$ionicViewSwitcher,$ionicPlatform) {
+        var hardWareBack = function (pathName) {
+          if($ionicHistory.currentView() == pathName){
+              $ionicPlatform.offHardwareBackButton(hardWareBack);
+              $ionicViewSwitcher.nextDirection('back');
+          }
+        };
+
         return {
-            routeInfo:null,
             ionicLoadingShow(content, timeout){
                 let loadingContent = angular.isUndefined(content) ? "正在载入中..." : content;
                 let isLoadingTimeOut = !angular.isUndefined(timeout);
@@ -101,9 +107,6 @@
                 obj.stick = false;
                 ionicToast.show(obj.message,obj.position,obj.stick,obj.timeout);
             },
-            hardWareBack(pathName){
-
-            },
             _log(name,data){
                 /*
                 全局console.log ,若要禁止则改成 return null
@@ -130,6 +133,9 @@
                 $state.go(name,params,isReload);
                 $ionicViewSwitcher.nextDirection(this.direction);
             },
+            onHardWareBack(){
+                $ionicPlatform.onHardwareBackButton(hardWareBack);
+            }
         }
     }
 })();
