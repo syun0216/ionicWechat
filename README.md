@@ -20,5 +20,7 @@
 * 如果想做成跨平台应用，可用ionic或者cordova初始化一个项目，将gulp build后的html、css和js文件放到
 cordova或者ionic项目的www文件夹里，运行命令cordova run android（ios）或者ionic run android（ios）
 
+###
+<img src="https://github.com/syun0216/ionicWechat/raw/master/src/assets/images/screenshot.png" width="300">
 
 ### enjoy it
