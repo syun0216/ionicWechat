@@ -1,0 +1,212 @@
+<ion-view view-title="首页" cache-view="false">
+    <ion-side-menus>
+        <ion-side-menu-content>
+            <ion-tabs class="tabs-stable tabs-icon-top">
+                <ion-tab title="预定" icon-on="ion-ios-paper" icon-off="ion-ios-paper-outline">
+                    <ion-view view-title="预定车票" cache-view="false">
+                        <ion-header-bar>
+                            <ion-nav-bar>
+                                <ion-nav-buttons side="primary">
+                                    <button class="button button-icon icon ion-navicon-round" menu-toggle="left">
+                                    </button>
+                                </ion-nav-buttons>
+                                <ion-nav-title>
+                                    <span>预定车票</span>
+                                </ion-nav-title>
+                            </ion-nav-bar>
+                        </ion-header-bar>
+                        <ion-content has-tabs="false" overflow-scroll='true' style="background: #efefef;" scroll="true"
+                                     direction="y">
+                            <ion-refresher
+                                    pulling-text="刷新中..."
+                                    on-refresh="doRefresh()">
+                            </ion-refresher>
+                            <ion-slide-box does-continue="true" auto-play="true" show-pager="true"
+                                           style="height: 150px;width:100%;margin-bottom:12px">
+                                <ion-slide>
+                                    <img src="assets/images/img1.png" style="width: 100%">
+                                </ion-slide>
+                                <ion-slide>
+                                    <img src="assets/images/img2.png" style="width: 100%">
+                                </ion-slide>
+                                <ion-slide>
+                                    <img src="assets/images/img3.png" style="width: 100%">
+                                </ion-slide>
+                            </ion-slide-box>
+                            <ion-list style="margin-bottom:12px">
+                                <ion-item>
+                                    <div class="list">
+                                        <label class="item item-input item-select">
+                                            <div class="input-label">
+                                                起点
+                                            </div>
+                                            <select>
+                                                <option>广州</option>
+                                                <option selected>深圳</option>
+                                                <option>中山</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <div class="text-center">
+                                        <Image src="assets/images/haungou.png" style="width:50px;margin-top:-12px"/>
+                                    </div>
+                                    <div>
+                                        <label class="item item-input item-select">
+                                            <div class="input-label">
+                                                终点
+                                            </div>
+                                            <select style="width:100px">
+                                                <option>惠州</option>
+                                                <option>珠海</option>
+                                                <option selected>佛山</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </ion-item>
+                            </ion-list>
+                            <ion-list>
+                                <ion-item>
+                                    <button class="button button-assertive button-block" ng-click="mainInterface.openDatePicker(date)">日期控件</button>
+                                </ion-item>
+                                <ion-item ng-bind="date"/>
+                            </ion-list>
+                            <ion-list>
+                                <ion-item>
+                                    <button ng-click="openModal1()" class="button button-assertive button-block">阅读相关规定</button>
+                                    <div class="ion-checkmark-round color_red text-center" ng-show="check"></div>
+                                </ion-item>
+                            </ion-list>
+                        </ion-content>
+                    </ion-view>
+                </ion-tab>
+                <ion-tab title="出行" icon-on="ion-ios-paw" icon-off="ion-ios-paw-outline">
+                    <ion-view cache-view="false">
+                        <ion-header-bar>
+                            <ion-nav-bar>
+                                <ion-nav-buttons side="primary">
+                                    <button class="button button-icon icon ion-navicon-round" menu-toggle="left">
+                                    </button>
+                                </ion-nav-buttons>
+                                <ion-nav-buttons side="secondary">
+                                    <button class="button button-icon icon ion-ios-search-strong"
+                                            ng-click="showFilterBar()">
+                                    </button>
+                                </ion-nav-buttons>
+                                <ion-nav-title>
+                                    <span>itemList</span>
+                                </ion-nav-title>
+                            </ion-nav-bar>
+                        </ion-header-bar>
+                        <ion-content has-tabs="true" overflow-scroll='true' style="background: #efefef;" scroll="true"
+                                     direction="y">
+                            <ion-list>
+                                <ion-item collection-repeat="item in items" ng-click="goToItemDetail(item)">
+                                    {{item}}
+                                    <ion-option-button class="button-positive">...</ion-option-button>
+                                </ion-item>
+                            </ion-list>
+                            <div ng-if="items !== undefined && !items.length" class="no-results">
+                                <p>No Results</p>
+                            </div>
+                        </ion-content>
+                    </ion-view>
+                </ion-tab>
+                <ion-tab title="我的" icon-on="ion-ios-person" icon-off="ion-ios-person-outline">
+                    <ion-view cache-view="false" view-title="我的">
+                        <ion-header-bar class="bar-stable">
+                            <ion-nav-bar>
+                                <ion-nav-buttons side="primary">
+                                    <button class="button button-icon icon ion-navicon-round" menu-toggle="left">
+                                    </button>
+                                </ion-nav-buttons>
+                            </ion-nav-bar>
+                            <h1 class="title">我的</h1>
+                        </ion-header-bar>
+                        <ion-content overflow-scroll='true' style="background: #efefef" scroll="true"
+                                     direction="y">
+                            <ion-list >
+                                <ion-item ng-repeat="item in mainInterface.itemData" ng-click="goToMyItemDetail(item.title)">
+                                    <ion-spinner icon="{{item.spinner}}"></ion-spinner>
+                                    <span>{{item.title}}</span>
+                                    <ion-option-button style="padding: 0 30px;" class="button-positive icon ion-edit"
+                                    >编辑
+                                    </ion-option-button>
+                                    <ion-option-button style="padding: 0 30px;"
+                                                       class="button-assertive icon ion-ios-trash-outline" ng-click="deleteItem(item)">
+                                        移除
+                                    </ion-option-button>
+                                </ion-item>
+                            <button class="button button-assertive button-block button-full"
+                                    ng-click="showConfirm()">
+                                退出
+                            </button>
+                            </ion-list>
+                        </ion-content>
+                    </ion-view>
+                </ion-tab>
+            </ion-tabs>
+        </ion-side-menu-content>
+        <ion-side-menu side="left" width="250">
+            <ion-view view-title="{{myName}}">
+                <ion-header-bar>
+                    <ion-nav-bar>
+                        <ion-nav-title>
+                            <span>side menu</span>
+                        </ion-nav-title>
+                    </ion-nav-bar>
+                </ion-header-bar>
+                <ion-content overflow-scroll='true'>
+                    <ion-list>
+                        <ion-checkbox>Red</ion-checkbox>
+                        <ion-checkbox>Yellow</ion-checkbox>
+                        <ion-checkbox>Pink</ion-checkbox>
+                        <ion-radio ng-model="choice" ng-value="'A'">Choose A</ion-radio>
+                        <ion-radio ng-model="choice" ng-value="'B'">Choose B</ion-radio>
+                        <ion-radio ng-model="choice" ng-value="'C'">Choose C</ion-radio>
+                        <ion-toggle ng-model="airplaneMode">Airplane Mode</ion-toggle>
+                        <div class="item range">
+                            <i class="icon ion-volume-low"></i>
+                            <input type="range" name="volume">
+                            <i class="icon ion-volume-high"></i>
+                        </div>
+                        <a class="item item-icon-left item-icon-right" href="#">
+                            <i class="icon ion-chatbubble-working"></i>
+                            Call Me
+                            <i class="icon ion-ios-telephone-outline"></i>
+                        </a>
+                        <a class="item item-avatar" href="#">
+                            <img src="assets/images/fire.png">
+                            <h2>Venkman</h2>
+                            <p>Back off, man. I'm a scientist.</p>
+                        </a>
+                    </ion-list>
+                </ion-content>
+            </ion-view>
+        </ion-side-menu>
+    </ion-side-menus>
+</ion-view>
+
+<script id="modal.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar>
+            <ion-nav-bar>
+                <ion-nav-buttons side="primary">
+                    <button class="button button-icon ion-arrow-left-c icon" ng-click="closeModal1()"></button>
+                </ion-nav-buttons>
+                <ion-nav-title>
+                    <span>相关规定</span>
+                </ion-nav-title>
+            </ion-nav-bar>
+        </ion-header-bar>
+        <ion-content>
+            <ion-list>
+                <ion-item>
+                    <p>鲁智深因见山水秀丽，贪行了半日，赶不上宿头，路中又没人作伴，那里投宿是好。又赶了三二十里田地，过了一条板桥，远远地望见一簇红霞，树木丛中，闪着一所庄院。庄后重重叠叠，都是乱山。鲁智深道：“只得投庄上去借宿。”迳奔到庄前看时，见数十个庄家，忙忙急急，搬东搬西。鲁智深到庄前，倚了禅杖，与庄客打个问讯。庄客道：“和尚，日晚来我庄上做甚的？”智深道：“小僧赶不上宿头，欲借贵庄投宿一宵，明早便行。”庄客道：“我庄上今夜有事，歇不得。”智深道：“胡乱借洒家歇一夜，明日便行。”庄客道：“和尚快走，休在这里讨死。”智深道：“也是怪哉！歇一夜打甚么不紧，怎地便是讨死？”庄家道：“去便去，不去时，便捉来缚在这里。”鲁智深大怒道：“你这厮村人，好没道理！俺又不曾说甚的，便要绑缚洒家。”庄家们也有骂的，也有劝的。鲁智深提起禅杖，却待要发作，只见庄里走出一个老人来。但见：主髭须似雪，发鬓如霜。行时腰曲头低，坐后耳聋眼暗。头裹三山暖帽，足穿四缝宽靴。腰间绦系佛头青，身上罗衫鱼肚白。好似山前都土地，正如海底老龙君。</p>
+                </ion-item>
+            </ion-list>
+            <button style="position:absolute;bottom:0" class="button button-assertive button-block" ng-click="confirmRoles()">确认</button>
+        </ion-content>
+    </ion-modal-view>
+</script>
+
+</ion-view>
