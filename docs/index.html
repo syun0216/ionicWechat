@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ionicWechat</title>
+    <meta name="description"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!--<script src="cordova.js"></script>-->
+    <script src="assets/lib/jquery/dist/jquery.min.js"></script><link rel="stylesheet" href="assets/styles/ionic.min.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/styles/public.css">
+    <link rel="stylesheet" href="assets/lib/ionic-filter-bar/dist/ionic.filter.bar.css">
+    <!--ionic-filter-bar-->
+
+    <link rel="stylesheet" href="assets/lib/ionic-filter-bar/dist/ionic.filter.bar.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <script>
+        function onDeviceReady() {
+            if (navigator.splashscreen)
+                setTimeout(function () {
+                    navigator.splashscreen.hide();
+                });
+        }
+        document.addEventListener('deviceready', onDeviceReady, false);
+
+    </script>
+</head>
+<body data-ng-app="app" ng-controller="AppCtrl" id="app">
+
+<ion-nav-view animation="slide-right-left"></ion-nav-view>
+
+<script src="script/ui.js"></script>
+
+
+<script src="script/app.js"></script>
+</body>
+
+</html>

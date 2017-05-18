@@ -4,6 +4,7 @@ var browserSync = require('browser-sync');
 var config = require('./gulp.config')();
 var del = require('del');
 var $ = require('gulp-load-plugins')({lazy: true});
+var uglify = require('gulp-uglify');
 
 gulp.task('help', $.taskListing);
 gulp.task('default', ['help']);
@@ -78,7 +79,7 @@ gulp.task('sass', function() {
         .pipe($.sourcemaps.init())
         .pipe($.sass(sassOptions))
         .pipe($.sourcemaps.write())
-        .pipe(gulp.dest(config.client + '/assets/styles'));
+        .pipe(gulp.dest(config.client + 'assets/styles'));
 });
 
 gulp.task('sass-min', function() {
@@ -92,8 +93,8 @@ gulp.task('sass-min', function() {
         .src(config.sass)
         .pipe($.plumber())
         .pipe($.sass(sassOptions))
-        .pipe(gulp.dest(config.tmp + '/styles'));
-})
+        .pipe(gulp.dest(config.client + 'assets/styles'));
+});
 
 gulp.task('sass-watcher', function() {
     gulp.watch([config.sass], ['sass']);
@@ -109,13 +110,13 @@ gulp.task('jade',function(){
 
     return gulp
         .src(config.jade)
-       // .pipe(changed(config.dist,{extension:'.html'}))
+        // .pipe(changed(config.dist,{extension:'.html'}))
         .pipe($.jade(options))
         .pipe(gulp.dest(config.jadeDist));
 });
 
 gulp.task('jade-watcher',function(){
-   gulp.watch([config.jade],['jade']);
+    gulp.watch([config.jade],['jade']);
 });
 
 
@@ -135,6 +136,7 @@ gulp.task('copy', function() {
         .src(config.assets, {base: config.client})
         .pipe(gulp.dest(config.dist + '/'));
 });
+
 
 gulp.task('optimize', ['inject', 'sass-min'], function() {
     log('Optimizing the js, css, html');
@@ -156,7 +158,7 @@ gulp.task('optimize', ['inject', 'sass-min'], function() {
         .pipe(cssFilter.restore)
 
         .pipe(jsFilter)
-        .pipe($.uglify())
+        // .pipe(uglify())
         .pipe(jsFilter.restore)
 
         .pipe(assets.restore())
@@ -170,7 +172,7 @@ gulp.task('serve', ['inject', 'sass','jade'], function() {
 });
 
 gulp.task('build', ['optimize', 'copy'], function() {
-    // startBrowserSync('dist');
+    startBrowserSync('dist');
 })
 
 gulp.task('serve-dist', function() {
@@ -253,7 +255,7 @@ function startBrowserSync(opt) {
         options.files = [
             config.client + '/**/**/*.*',
             '!' + config.sass,
-          //  '!' + config.jade,
+            //  '!' + config.jade,
             config.tmp + '/**/*.css'
         ];
 

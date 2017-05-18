@@ -1,0 +1,202 @@
+* {
+	margin: 0;
+	padding: 0
+}
+
+body {
+	/*font-size: 12px;*/
+	font-family: arial;
+	-webkit-text-size-adjust: none;
+	line-height: 1.62;
+	/*background-color: #000;*/
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body,
+html {
+	width: 100%;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 100%;
+	font-weight: normal
+}
+
+ul,
+ol,
+li {
+	list-style: none;
+}
+
+ul,
+li {
+	padding: 0;
+	margin: 0;
+	/*width: 100%;*/
+}
+
+em {
+	font-style: normal
+}
+
+img {
+	border: none;
+}
+
+input,
+img {
+	vertical-align: middle;
+}
+
+input,
+select,
+textarea {
+	outline: 0;
+	-webkit-appearance: none
+}
+
+q:before,
+q:after {
+	content: ''
+}
+dd {
+    display: block;
+/*    -webkit-margin-start: 0px !important;*/
+}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{	-webkit-appearance: none !important;	margin: 0; background: rgba(0,0,0,0);}
+
+.fn-clear:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+.fn-clear {
+	*zoom: 1;
+	clear: both;
+}
+
+a {
+	color: #666;
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a:active {
+	color: #333;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+section,
+aside,
+header,
+footer,
+hgroup,
+article {
+	display: block
+}
+
+.row-listmg {
+    margin-right: -15px !important;
+    margin-left: 10px !important;
+}
+
+.not_mg{
+	margin-right:0px !important;
+    margin-left: 0px !important;
+}
+
+.imgwidht{width: 100%;}
+
+.clear-float:after {clear: both;display: block;	visibility: hidden;	height: 0;	line-height: 0;	content: '';}
+
+.float-l {float: left;}
+
+.float-r {float: right;}
+
+.waterindex{background: #eee;font-family: Helvetica Neue, Helvetica, Arial, sans-serif;font-size: 16px;color: #000;margin: 0;padding: 0;overflow-x: hidden}
+
+.orderlist-bg{background: #eee;font-family: Helvetica Neue, Helvetica, Arial, sans-serif;font-size: 16px;color: #000;margin: 0;padding: 0;overflow-x: hidden;
+	min-height:100vh;}
+/*----------------滑动模块 start-----------------------*/
+.swiper-body {background: #eee;font-family: Helvetica Neue, Helvetica, Arial, sans-serif;font-size: 14px;color: #000;margin: 0;padding: 0;overflow-x: hidden;}
+.swiper-container {width: 100%;}
+.swiper-slide {text-align: center;font-size: 18px;background: #fff;	display: -webkit-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+			}
+
+/*----------------滑动模块 end-----------------------*/
+
+.body-bg{background: #F0F0F0 !important;}
+
+/*头部标题 start*/
+.content_title {
+	position: relative;
+	background: #FD5858;
+	color: #fff;
+	padding: 0.6em 0em;
+	top: 0;
+	left: 0;
+	font-size: 16px;
+}
+
+.content_title .back_arrow {
+	display: inline-block;
+	margin-left: 1em;
+	width: 10px;
+}
+
+.content_title .back_arrow img {
+	width: 8px;
+}
+
+.content_title .title {
+	display: inline-block;
+	position: absolute;
+	left: 40%;
+	top: 11px;
+}
+
+.content_title .buy {
+	display: inline-block;
+	position: absolute;
+	right: 4%;
+	top: 10px;
+    font-size: 14px;
+}
+
+/*进度条选中状态公用样式  start*/
+.act-circle{border: 1px solid #ff5858 !important; background: #ff5858 !important;}
+.act-border{border: 1px solid #ff5858 !important;}
+/*进度条选中状态公用样式  end*/
+
+.margin{
+	margin-left: 6px;
+	margin-right:6px;
+}
+.border_bottom{
+	border-bottom: 1px solid #ddd;
+}
